@@ -2,10 +2,11 @@
 Name=Samegame
 Comment=A fun game
 Encoding=UTF-8
-Type=Service
+Type=Application
 Icon=applications-toys
+Exec=kpackagelauncherqml -a org.kde.plasma.samegame
 X-KDE-ParentApp=
-X-KDE-ServiceTypes=Plasma/Generic
+X-KDE-ServiceTypes=KPackage/GenericQML
 X-KDE-PluginInfo-Author=Sebastian Kügler
 X-KDE-PluginInfo-Email=sebas@kde.org
 X-KDE-PluginInfo-Name=org.kde.plasma.samegame
