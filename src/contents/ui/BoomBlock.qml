@@ -66,11 +66,11 @@ Item {
         anchors.fill: parent
         source: {
             if (type == 0)
-                return "qrc:///shared/pics/redStone.svg";
+                return "qrc:/shared/pics/redStone.svg";
             else if (type == 1)
-                return "qrc:///shared/pics/blueStone.svg";
+                return "qrc:/shared/pics/blueStone.svg";
             else
-                return "qrc:///shared/pics/greenStone.svg";
+                return "qrc:/shared/pics/greenStone.svg";
         }
         opacity: 0
 
@@ -88,11 +88,11 @@ Item {
             // ![0]
             source: {
                 if (type == 0)
-                    return "qrc:///shared/pics/redStar.png";
+                    return "qrc:/shared/pics/redStar.png";
                 else if (type == 1)
-                    return "qrc:///shared/pics/blueStar.png";
+                    return "qrc:/shared/pics/blueStar.png";
                 else
-                    return "qrc:///shared/pics/greenStar.png";
+                    return "qrc:/shared/pics/greenStar.png";
             }
             rotationVelocityVariation: 360
             // ![0]
