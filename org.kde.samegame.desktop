@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: (C) 2020 Carl Schwan <carl@carlschwan.eu>
+#
+# SPDX-LicenseRef: CC0-1.0
+[Desktop Entry]
+Name=Samegame
+Comment=Simple game
+Version=1.0
+Exec=samegame
+MimeType=application/x-kontrast;
+Icon=org.kde.samegame
+Type=Application
+Terminal=false
+Categories=Qt;KDE;

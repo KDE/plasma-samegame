@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+    <id>org.kde.plasma.samegame</id>
+    <name>Samegame</name>
+    <summary>A fun game</summary>
+    <url type="homepage">http://plasma-active.org</url>
+    <url type="donation">https://www.kde.org/donate.php?app=org.kde.plasma.samegame</url>
+    <developer_name>Sebastian Kügler &lt;sebas@kde.org&gt;</developer_name>
+    <icon type="stock">applications-toys</icon>
+    <project_license></project_license>
+    <metadata_license>CC0-1.0</metadata_license>
+</component>

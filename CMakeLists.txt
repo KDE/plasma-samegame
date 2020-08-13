@@ -1,29 +1,44 @@
-project(plasma-samegame)
+cmake_minimum_required(VERSION 3.8)
 
-cmake_minimum_required(VERSION 2.8.10.1)
+project(samegame)
 
-include(CPack)
+set(QT_MIN_VERSION "5.14.0")
+set(KF5_MIN_VERSION "5.70.0")
+
 include(FeatureSummary)
-find_package(PkgConfig)
 
 ################# set KDE specific information #################
-
-find_package(ECM 0.0.8 REQUIRED NO_MODULE)
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
-include(KDECompilerSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
+include(ECMSetupVersion)
+include(ECMGenerateHeaders)
+include(ECMPoQmTools)
+include(KDEClangFormat)
 
-# find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Core Quick Test Gui)
+################# Find dependencies #################
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Gui Qml QuickControls2 Svg Sql)
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Kirigami2 I18n CoreAddons Declarative)
 
+################# build and install #################
+add_subdirectory(src)
 
-set (QT_MIN_VERSION "5.4.0")
-find_package(KF5 REQUIRED COMPONENTS
-                Package)
+add_definitions(-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII -DQT_NO_URL_CAST_FROM_STRING)
+add_definitions(-DQT_USE_QSTRINGBUILDER)
+add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050d00)
 
-kpackage_install_package(package org.kde.plasma.samegame genericqml)
-install(FILES package/metadata.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} RENAME org.kde.plasma.samegame.desktop)
+install(PROGRAMS org.kde.samegame.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.samegame.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+#install(FILES org.kde.samegame.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
 
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES src/*.cpp src/*.h)
+kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+        
