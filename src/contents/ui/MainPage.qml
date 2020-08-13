@@ -14,6 +14,7 @@ import "samegame.js" as SameGame
 Kirigami.Page {
     id: root
     title: i18n("Samegame")
+    globalToolBarStyle: Kirigami.ApplicationHeaderStyle.None
 
     background: Image {
         id: background
