@@ -66,11 +66,11 @@ Item {
         anchors.fill: parent
         source: {
             if (type == 0)
-                return "qrc:///shared/pics/redStone.png";
+                return "qrc:///shared/pics/redStone.svg";
             else if (type == 1)
-                return "qrc:///shared/pics/blueStone.png";
+                return "qrc:///shared/pics/blueStone.svg";
             else
-                return "qrc:///shared/pics/greenStone.png";
+                return "qrc:///shared/pics/greenStone.svg";
         }
         opacity: 0
 

@@ -14,7 +14,6 @@ import "samegame.js" as SameGame
 Kirigami.Page {
     id: root
     title: i18n("Samegame")
-    padding: 0
 
     background: Image {
         id: background
