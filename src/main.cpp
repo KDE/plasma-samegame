@@ -20,11 +20,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
     app.setApplicationName("Samegame");
-    
-    KAboutData aboutData("samegame", xi18nc("@title", "Kontrast"), "1.0",
-                         xi18nc("@title", "A contrast checker application"),
+
+    KAboutData aboutData("samegame", xi18nc("@title", "Samegame"), "1.0",
+                         xi18nc("@title", "A fun game"),
                          KAboutLicense::GPL_V3);
-    
+
     aboutData.addAuthor(xi18nc("@info:credit", "Sebastian Kügler"), xi18nc("@info:credit", "Creator"), "sebas@kde.org");
     aboutData.addAuthor(xi18nc("@info:credit", "Carl Schwan"), xi18nc("@info:credit", "Maintainer"), "carl@carlschwan.eu", "https://carlschwan.eu");
 
@@ -37,7 +37,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     aboutData.processCommandLine(&parser);
 
     QQmlApplicationEngine engine;
-    
+
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:///samegame.qml")));
 
