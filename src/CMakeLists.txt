@@ -4,13 +4,14 @@ add_executable(samegame
     ${samegame_SRCS})
     
 target_link_libraries(samegame
-    Qt5::Core
-    Qt5::Gui
-    Qt5::Qml
-    Qt5::Quick
-    Qt5::QuickControls2
-    Qt5::Svg
-    Qt5::Sql
+    Qt::Core
+    Qt::Widgets
+    Qt::Gui
+    Qt::Qml
+    Qt::Quick
+    Qt::QuickControls2
+    Qt::Svg
+    Qt::Sql
     KF5::I18n
     KF5::CoreAddons)
     
