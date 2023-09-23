@@ -2,13 +2,17 @@ cmake_minimum_required(VERSION 3.8)
 
 project(samegame)
 
+# QT_MAJOR_VERSION is defined automatically by QtVersionOption (since ECM 5.82)
+# which is included by KDEInstallDirs;
+# This variables are updated below if Qt6 is found by ECM
 set(QT_MIN_VERSION "5.14.0")
 set(KF5_MIN_VERSION "5.70.0")
+set(KF_MAJOR_VERSION "5")
 
 include(FeatureSummary)
 
-################# set KDE specific information #################
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF_MIN_VERSION} NO_MODULE)
+set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Modules." URL "https://projects.kde.org/projects/kdesupport/extra-cmake-modules")
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
@@ -21,9 +25,15 @@ include(ECMGenerateHeaders)
 include(ECMPoQmTools)
 include(KDEClangFormat)
 
+if (QT_MAJOR_VERSION STREQUAL "6")
+    set(REQUIRED_QT_VERSION "6.4")
+    set(KF_MIN_VERSION "5.240.0")
+    set(KF_MAJOR_VERSION "6")
+endif()
+
 ################# Find dependencies #################
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Gui Qml QuickControls2 Svg Sql Widgets)
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Kirigami2 I18n CoreAddons Declarative)
+find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS Kirigami2 I18n CoreAddons Declarative)
 
 ################# build and install #################
 add_subdirectory(src)

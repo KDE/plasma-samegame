@@ -12,7 +12,7 @@ target_link_libraries(samegame
     Qt::QuickControls2
     Qt::Svg
     Qt::Sql
-    KF5::I18n
-    KF5::CoreAddons)
+    KF${QT_MAJOR_VERSION}::I18n
+    KF${QT_MAJOR_VERSION}::CoreAddons)
     
-install(TARGETS samegame ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS samegame ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
